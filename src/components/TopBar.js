@@ -6,6 +6,7 @@ const TopBar = ({ onFileChange, onUrlChange, onConfirm }) => {
   const [isUrlEntered, setIsUrlEntered] = useState(false);
   const [url, setUrl] = useState("");
 
+  // Check if the URL is valid
   const isValidUrl = (url) => {
     try {
       new URL(url);
@@ -15,26 +16,29 @@ const TopBar = ({ onFileChange, onUrlChange, onConfirm }) => {
     }
   };
 
+  // Handle file change event
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
       setIsFileSelected(true);
-      setIsUrlEntered(false); // Reset URL when a file is selected
+      setIsUrlEntered(false);
     }
     onFileChange(event);
   };
 
+  // Handle URL change event
   const handleUrlChange = (event) => {
     setUrl(event.target.value);
     if (event.target.value.trim()) {
       setIsUrlEntered(true);
-      setIsFileSelected(false); // Reset file input when URL is entered
+      setIsFileSelected(false);
     } else {
       setIsUrlEntered(false);
     }
     onUrlChange(event);
   };
 
+  // Handle confirm button click
   const handleConfirm = () => {
     if (isFileSelected) {
       onConfirm();
@@ -42,7 +46,7 @@ const TopBar = ({ onFileChange, onUrlChange, onConfirm }) => {
     } else if (isUrlEntered && isValidUrl(url)) {
       setIsFileSelected(false);
       setIsUrlEntered(false);
-      setUrl(""); // Reset URL input
+      setUrl("");
       onConfirm();
     } else {
       alert("Please enter a valid URL or select a file.");
@@ -58,12 +62,13 @@ const TopBar = ({ onFileChange, onUrlChange, onConfirm }) => {
           onChange={handleFileChange}
           className="file-input"
           id="file-upload"
-          disabled={isUrlEntered} // Disable file input when URL is entered
+          disabled={isUrlEntered}
         />
-        {/* Custom button to trigger file input */}
         <label
           htmlFor="file-upload"
-          className={`custom-file-label ${isFileSelected ? "selected" : ""}`}
+          className={`custom-file-label ${isFileSelected ? "selected" : ""} ${
+            isUrlEntered ? "disabled" : ""
+          }`}
         >
           Choose File
         </label>
@@ -74,12 +79,14 @@ const TopBar = ({ onFileChange, onUrlChange, onConfirm }) => {
           onChange={handleUrlChange}
           className="url-input"
           value={url}
-          disabled={isFileSelected} // Disable URL input when file is selected
+          disabled={isFileSelected}
         />
         <button
-          className={`confirm-button ${!(isFileSelected || isUrlEntered) ? "disabled" : ""}`}
+          className={`confirm-button ${
+            !(isFileSelected || isUrlEntered) ? "disabled" : ""
+          }`}
           onClick={handleConfirm}
-          disabled={!(isFileSelected || isUrlEntered)} // Disable button if no file or URL is chosen
+          disabled={!(isFileSelected || isUrlEntered)}
         >
           Play Video
         </button>

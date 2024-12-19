@@ -26,6 +26,7 @@ const VideoPlayer = ({ videoSource, isDarkMode, toggleDarkMode, onDrop }) => {
     }
   }, [videoSource]);
 
+  // Toggle play/pause state of the video
   const togglePlayPause = () => {
     const video = videoRef.current;
     if (video.paused) {
@@ -37,6 +38,7 @@ const VideoPlayer = ({ videoSource, isDarkMode, toggleDarkMode, onDrop }) => {
     }
   };
 
+  // Toggle mute/unmute state of the video
   const toggleMute = () => {
     const video = videoRef.current;
     if (video.muted) {
@@ -51,6 +53,7 @@ const VideoPlayer = ({ videoSource, isDarkMode, toggleDarkMode, onDrop }) => {
     }
   };
 
+  // Enter or exit full screen mode
   const handleFullScreen = () => {
     const video = videoRef.current;
     if (video.requestFullscreen) {
@@ -62,13 +65,33 @@ const VideoPlayer = ({ videoSource, isDarkMode, toggleDarkMode, onDrop }) => {
     }
   };
 
+  // Sync play/pause state with the video element
   const handlePlayPauseSync = () => {
     setIsPlaying(!videoRef.current.paused);
   };
 
+  // Sync mute/unmute state with the video element
   const handleMuteSync = () => {
     const video = videoRef.current;
     setIsMuted(video.muted || video.volume === 0);
+  };
+
+  // Play/pause the video when clicked
+  const handleVideoClick = () => {
+    togglePlayPause();
+  };
+
+  // Enter or exit full screen mode when double clicked
+  const handleVideoDoubleClick = () => {
+    handleFullScreen();
+  };
+
+  // Play/pause the video when space key is pressed
+  const handleKeyDown = (event) => {
+    if (event.code === "Space") {
+      event.preventDefault();
+      togglePlayPause();
+    }
   };
 
   useEffect(() => {
@@ -87,6 +110,13 @@ const VideoPlayer = ({ videoSource, isDarkMode, toggleDarkMode, onDrop }) => {
     }
   }, [videoSource]);
 
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  });
+
   return (
     <div className="main-container">
       <div className="theme-icon" onClick={toggleDarkMode}>
@@ -104,13 +134,15 @@ const VideoPlayer = ({ videoSource, isDarkMode, toggleDarkMode, onDrop }) => {
         videoSource={videoSource}
         isDarkMode={isDarkMode}
       >
-        {videoSource && ( // Conditionally render the video player only if videoSource is defined
+        {videoSource && (
           <div className="video-wrapper">
             <video
               className="video-element"
               ref={videoRef}
               src={videoSource}
               controls={false}
+              onClick={handleVideoClick}
+              onDoubleClick={handleVideoDoubleClick}
             />
             <div className="controls-container">
               <div

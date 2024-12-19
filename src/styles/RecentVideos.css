@@ -1,4 +1,3 @@
-/* Recent Videos Container */
 .recent-videos {
   border: 1px solid #4e664f;
   border-radius: 8px;
@@ -34,11 +33,17 @@
   text-decoration: none;
   border-radius: 8px;
   transition: background-color 0.3s ease;
+  margin-right: 3%;
+}
+
+.dark-theme .recent-videos li:hover {
+  background-color: #3c0061;
 }
 
 .recent-videos li {
   border-radius: 8px;
   transition: background-color 0.3s ease;
+  margin-right: 3%;
 }
 
 .video-thumbnail {
@@ -85,18 +90,17 @@
   }
 }
 
-/* Delete Button */
 .delete-button {
   background: none;
   border: none;
-  color: red;
-  font-size: 18px;
   margin-left: auto;
   cursor: pointer;
-  /* padding: 0; */
-  padding-right: 20px;
 }
 
-.delete-button:hover {
-  color: darkred;
+.video-thumbnail {
+  width: 130px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
 }

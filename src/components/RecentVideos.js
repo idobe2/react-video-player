@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/RecentVideos.css";
 
-const RecentVideos = ({ recentVideos, onRecentClick, onDeleteClick }) => {
+const RecentVideos = ({ recentVideos, onRecentClick, onDeleteClick, isDarkMode }) => {
   const [thumbnails, setThumbnails] = useState({});
   const [loadingStates, setLoadingStates] = useState({});
 
@@ -18,8 +18,8 @@ const RecentVideos = ({ recentVideos, onRecentClick, onDeleteClick }) => {
 
         video.addEventListener("seeked", () => {
           const canvas = document.createElement("canvas");
-          canvas.width = video.videoWidth / 4;
-          canvas.height = video.videoHeight / 4;
+          canvas.width = video.videoWidth; // Use video dimensions
+          canvas.height = video.videoHeight; // Use video dimensions
           const context = canvas.getContext("2d");
           context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
@@ -52,7 +52,9 @@ const RecentVideos = ({ recentVideos, onRecentClick, onDeleteClick }) => {
     <div className="recent-videos">
       <h3>Recent Videos</h3>
       {recentVideos.length === 0 ? (
-        <p className="no-videos-message">No recent videos. Please choose a local video or enter a video URL.</p>
+        <p className="no-videos-message">
+          No recent videos. Please choose a local video or enter a video URL.
+        </p>
       ) : (
         <ul>
           {recentVideos.map((url, index) => (
@@ -60,15 +62,31 @@ const RecentVideos = ({ recentVideos, onRecentClick, onDeleteClick }) => {
               {loadingStates[url] ? (
                 <div className="spinner"></div>
               ) : thumbnails[url] ? (
-                <img src={thumbnails[url]} alt="Video Thumbnail" className="video-thumbnail" />
+                <img
+                  src={thumbnails[url]}
+                  alt="Video Thumbnail"
+                  className="video-thumbnail"
+                />
               ) : (
                 <span className="error-indicator">Error loading</span>
               )}
               <span className="video-name" onClick={() => onRecentClick(url)}>
                 {getVideoName(url)}
               </span>
-              <button className="delete-button" onClick={() => onDeleteClick(url)}>
-                ✖
+              <button
+                className="delete-button"
+                onClick={() => onDeleteClick(url)}
+              >
+                <img
+                  src={
+                    process.env.PUBLIC_URL +
+                    (isDarkMode
+                      ? "/delete-dark-icon.svg"
+                      : "/delete-icon.svg")
+                  }
+                  alt="Delete Icon"
+                  className="delete-icon"
+                />
               </button>
             </li>
           ))}

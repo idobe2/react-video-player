@@ -46,6 +46,7 @@ const App = () => {
         recentVideos={recentVideos}
         onRecentClick={handleRecentClick}
         onDeleteClick={handleDeleteVideo}
+        isDarkMode={isDarkMode}
       />
     </div>
   );

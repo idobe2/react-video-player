@@ -5,6 +5,7 @@ const useVideoUpload = () => {
   const [tempVideoSource, setTempVideoSource] = useState("");
   const [recentVideos, setRecentVideos] = useState([]);
 
+  // Handle file change event
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -13,10 +14,12 @@ const useVideoUpload = () => {
     }
   };
 
+  // Handle URL change event
   const handleUrlChange = (event) => {
     setTempVideoSource(event.target.value);
   };
 
+  // Handle confirm button click
   const handleConfirm = () => {
     if (tempVideoSource) {
       if (tempVideoSource.startsWith("http")) {
@@ -36,6 +39,7 @@ const useVideoUpload = () => {
     }
   };
 
+  // Handle drop event
   const handleDrop = (event) => {
     event.preventDefault();
     const file = event.dataTransfer.files[0];
@@ -48,8 +52,11 @@ const useVideoUpload = () => {
     }
   };
 
+  // Handle delete video
   const handleDeleteVideo = (url) => {
-    setRecentVideos((prevVideos) => prevVideos.filter((video) => video !== url));
+    setRecentVideos((prevVideos) =>
+      prevVideos.filter((video) => video !== url)
+    );
   };
 
   return {

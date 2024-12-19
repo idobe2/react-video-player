@@ -13,7 +13,6 @@
   display: none;
 }
 
-/* Style for the custom label (button-like) */
 .custom-file-label {
   display: inline-block;
   padding: 7px 20px;
@@ -30,15 +29,21 @@
 .dark-theme .custom-file-label {
   background-color: #333;
   color: #fff;
-  border: 2px solid #444444;
+  border: 2px solid #fff;
 }
 
-/* Style when the video is selected */
 .custom-file-label.selected {
   background-color: #018786;
 }
 
-/* Hover effect for file input button */
+.custom-file-label.disabled {
+  cursor: not-allowed;
+}
+
+.dark-theme .custom-file-label.selected {
+  background-color: #6e00b3;
+}
+
 .custom-file-label:hover {
   background-color: #cac4d080;
 }
@@ -47,7 +52,6 @@
   background-color: #444;
 }
 
-/* Style for the URL input */
 .url-input {
   background-color: rgba(0, 123, 255, 0);
   padding: 8px;
@@ -61,10 +65,9 @@
 .dark-theme .url-input {
   background-color: #333;
   color: #fff;
-  border: 2px solid #CAC4D0;
+  border: 2px solid #fff;
 }
 
-/* Placeholder color for the URL input */
 .url-input::placeholder {
   color: black;
 }
@@ -73,19 +76,16 @@
   color: #fff;
 }
 
-/* Disabled state for the URL input */
 .url-input:disabled {
   background-color: rgba(0, 123, 255, 0);
   cursor: not-allowed;
 }
 
-/* Disabled state for the file input */
 .file-input:disabled {
   background-color: #f5f5f5;
   cursor: not-allowed;
 }
 
-/* Confirm button styles */
 .confirm-button {
   padding: 10px 20px;
   background-color: #a8dcab;
@@ -100,12 +100,14 @@
   background-color: #65558F;
 }
 
-/* Disabled state for the confirm button */
 .confirm-button:disabled {
   cursor: not-allowed;
 }
 
-/* Hover effect for confirm button */
 .confirm-button:hover:not(:disabled) {
-  background-color: #9E55FC;
+  background-color: #008000;
+}
+
+.dark-theme .confirm-button:hover:not(:disabled) {
+  background-color: #6e00b3;
 }

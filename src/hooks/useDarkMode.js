@@ -8,15 +8,16 @@ const useDarkMode = () => {
     if (savedTheme === "light") {
       setIsDarkMode(false);
     } else {
-    // Default to dark mode
+      // Default to dark mode
       setIsDarkMode(true);
     }
   }, []);
 
+  // Toggle dark mode
   const toggleDarkMode = () => {
     setIsDarkMode((prevMode) => {
       const newMode = !prevMode;
-      localStorage.setItem("theme", newMode ? "dark" : "light"); // Store theme in localStorage
+      localStorage.setItem("theme", newMode ? "dark" : "light");
       return newMode;
     });
   };
