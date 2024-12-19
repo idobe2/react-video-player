@@ -1,0 +1,111 @@
+.upload-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+  background-color: #8cb88e;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  align-items: center;
+}
+
+.file-input {
+  display: none;
+}
+
+/* Style for the custom label (button-like) */
+.custom-file-label {
+  display: inline-block;
+  padding: 7px 20px;
+  border: 2px solid #CAC4D0;
+  color: black;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  user-select: none;
+  transition: background-color 0.3s;
+}
+
+.dark-theme .custom-file-label {
+  background-color: #333;
+  color: #fff;
+  border: 2px solid #444444;
+}
+
+/* Style when the video is selected */
+.custom-file-label.selected {
+  background-color: #018786;
+}
+
+/* Hover effect for file input button */
+.custom-file-label:hover {
+  background-color: #cac4d080;
+}
+
+.dark-theme .custom-file-label:hover {
+  background-color: #444;
+}
+
+/* Style for the URL input */
+.url-input {
+  background-color: rgba(0, 123, 255, 0);
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 2px solid #CAC4D0;
+  width: 250px;
+  text-align: center;
+}
+
+.dark-theme .url-input {
+  background-color: #333;
+  color: #fff;
+  border: 2px solid #CAC4D0;
+}
+
+/* Placeholder color for the URL input */
+.url-input::placeholder {
+  color: black;
+}
+
+.dark-theme .url-input::placeholder {
+  color: #fff;
+}
+
+/* Disabled state for the URL input */
+.url-input:disabled {
+  background-color: rgba(0, 123, 255, 0);
+  cursor: not-allowed;
+}
+
+/* Disabled state for the file input */
+.file-input:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+/* Confirm button styles */
+.confirm-button {
+  padding: 10px 20px;
+  background-color: #a8dcab;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dark-theme .confirm-button {
+  background-color: #65558F;
+}
+
+/* Disabled state for the confirm button */
+.confirm-button:disabled {
+  cursor: not-allowed;
+}
+
+/* Hover effect for confirm button */
+.confirm-button:hover:not(:disabled) {
+  background-color: #9E55FC;
+}
