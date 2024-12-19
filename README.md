@@ -40,12 +40,24 @@ cd react-video-player
 npm install
 ```
 
+or using Yarn:
+
+```bash
+yarn install
+```
+
 ### Run the App
 
 Start the development server:
 
 ```bash
 npm start
+```
+
+or using Yarn:
+
+```bash
+yarn start
 ```
 
 The app will be available at [http://localhost:3000](http://localhost:3000).
@@ -92,18 +104,6 @@ react-video-player/
 │   ├── index.js
 └── README.md
 ```
-
-## Contributing
-
-Contributions are welcome! If you encounter any bugs or have feature suggestions, feel free to create an issue or submit a pull request.
-
-1. Fork the repository.
-2. Create a new branch for your feature/bug fix.
-3. Commit your changes and open a pull request.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
 
 ## Acknowledgments
 
