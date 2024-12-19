@@ -11,6 +11,11 @@ React Video Player is a simple and user-friendly application for playing videos 
 - **Theming**: Switch between light and dark modes.
 - **Custom Video Controls**: Includes play/pause, mute/unmute, and fullscreen options.
 
+## Screenshots
+
+<img src="screenshots/screenshot1.png" alt="Alt text" width="400"> <img src="screenshots/screenshot2.png" alt="Alt text" width="400">
+<img src="screenshots/screenshot3.png" alt="Alt text" width="400"> <img src="screenshots/screenshot4.png" alt="Alt text" width="400">
+
 ## Installation
 
 To get started with the React Video Player app, follow these steps:
