@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/RecentVideos.css";
 
-const RecentVideos = ({ recentVideos, onRecentClick }) => {
+const RecentVideos = ({ recentVideos, onRecentClick, onDeleteClick }) => {
   const [thumbnails, setThumbnails] = useState({});
   const [loadingStates, setLoadingStates] = useState({});
 
@@ -56,7 +56,7 @@ const RecentVideos = ({ recentVideos, onRecentClick }) => {
       ) : (
         <ul>
           {recentVideos.map((url, index) => (
-            <li key={index} onClick={() => onRecentClick(url)} className="video-item">
+            <li key={index} className="video-item">
               {loadingStates[url] ? (
                 <div className="spinner"></div>
               ) : thumbnails[url] ? (
@@ -64,7 +64,12 @@ const RecentVideos = ({ recentVideos, onRecentClick }) => {
               ) : (
                 <span className="error-indicator">Error loading</span>
               )}
-              <span className="video-name">{getVideoName(url)}</span>
+              <span className="video-name" onClick={() => onRecentClick(url)}>
+                {getVideoName(url)}
+              </span>
+              <button className="delete-button" onClick={() => onDeleteClick(url)}>
+                ✖
+              </button>
             </li>
           ))}
         </ul>
@@ -72,6 +77,5 @@ const RecentVideos = ({ recentVideos, onRecentClick }) => {
     </div>
   );
 };
-
 
 export default RecentVideos;

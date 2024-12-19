@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import "../styles/VideoPlayer.css";
+import DragDropContainer from "./DragDropContainer";
 
 const VideoPlayer = ({ videoSource, isDarkMode, toggleDarkMode, onDrop }) => {
   const videoRef = useRef(null);
@@ -15,16 +16,16 @@ const VideoPlayer = ({ videoSource, isDarkMode, toggleDarkMode, onDrop }) => {
       document.body.classList.remove("dark-theme");
     }
   }, [isDarkMode]);
-  
-    // Auto-play the video when videoSource changes
-    useEffect(() => {
-      if (videoSource) {
-        const video = videoRef.current;
-        video.play();
-        setIsPlaying(true);
-      }
-    }, [videoSource]);
-  
+
+  // Auto-play the video when videoSource changes
+  useEffect(() => {
+    if (videoSource) {
+      const video = videoRef.current;
+      video.play();
+      setIsPlaying(true);
+    }
+  }, [videoSource]);
+
   const togglePlayPause = () => {
     const video = videoRef.current;
     if (video.paused) {
@@ -98,12 +99,12 @@ const VideoPlayer = ({ videoSource, isDarkMode, toggleDarkMode, onDrop }) => {
         />
       </div>
 
-<div
-  className={`drag-drop-container ${videoSource ? (isPlaying ? "playing" : "no-border") : ""}`}
-  onDrop={onDrop}
-  onDragOver={(e) => e.preventDefault()}
->
-        {videoSource ? (
+      <DragDropContainer
+        onDrop={onDrop}
+        videoSource={videoSource}
+        isDarkMode={isDarkMode}
+      >
+        {videoSource && ( // Conditionally render the video player only if videoSource is defined
           <div className="video-wrapper">
             <video
               className="video-element"
@@ -136,17 +137,8 @@ const VideoPlayer = ({ videoSource, isDarkMode, toggleDarkMode, onDrop }) => {
               </div>
             </div>
           </div>
-        ) : (
-          <div className="drag-placeholder">
-            <img
-              src={process.env.PUBLIC_URL + "/upload-icon.svg"}
-              alt="Drag and Drop Icon"
-              className="drag-icon"
-            ></img>
-            Drag and Drop your video file here
-          </div>
         )}
-      </div>
+      </DragDropContainer>
     </div>
   );
 };

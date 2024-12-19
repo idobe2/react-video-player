@@ -48,6 +48,10 @@ const useVideoUpload = () => {
     }
   };
 
+  const handleDeleteVideo = (url) => {
+    setRecentVideos((prevVideos) => prevVideos.filter((video) => video !== url));
+  };
+
   return {
     videoSource,
     setVideoSource,
@@ -59,6 +63,7 @@ const useVideoUpload = () => {
     handleUrlChange,
     handleConfirm,
     handleDrop,
+    handleDeleteVideo,
   };
 };
 

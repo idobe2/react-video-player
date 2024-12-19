@@ -9,6 +9,11 @@ body.dark-theme {
   color: #e0e0e0;
 }
 
+body.dark-theme .upload-container {
+  background-color: #3c4042;
+  color: #fff;
+}
+
 /* Change Theme Icon */
 .theme-icon {
   position: absolute;
@@ -26,26 +31,7 @@ body.dark-theme {
   margin: 20px auto;
 }
 
-body.dark-theme .upload-container {
-  background-color: #3c4042;
-  color: #fff;
-}
-
-/* Dark Mode Styles for Inputs */
-body.dark-theme .file-input,
-body.dark-theme .url-input {
-  background-color: #333;
-  color: #fff;
-  border-color: #444;
-}
-
-/* Drag-and-Drop Container when playing */
-.drag-drop-container.playing {
-  background-color: transparent;
-  border: none;
-}
-
-/* Default Drag-and-Drop Container Styles */
+/* Drag-and-Drop Container */
 .drag-drop-container {
   position: relative;
   width: 100%;
@@ -65,8 +51,8 @@ body.dark-theme .drag-drop-container {
   border: 2px dashed #bb86fc;
 }
 
-/* Dark Mode Drag-and-Drop Container when playing */
-body.dark-theme .drag-drop-container.playing {
+/* Remove background and border when a video is loaded */
+.drag-drop-container.video-loaded {
   background-color: transparent;
   border: none;
 }
@@ -81,17 +67,13 @@ body.dark-theme .drag-drop-container.playing {
   gap: 10px;
 }
 
-.dark-theme .drag-placeholder {
+body.dark-theme .drag-placeholder {
   color: #bb86fc;
 }
 
 /* Drag-and-Drop Icon */
 .drag-icon {
   max-width: 100px;
-}
-
-.no-border {
-  border: none;
 }
 
 /* Video Wrapper */

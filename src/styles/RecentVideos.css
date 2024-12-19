@@ -1,76 +1,102 @@
+/* Recent Videos Container */
 .recent-videos {
-    border: 1px solid #4e664f;
-    border-radius: 8px;
-    max-width: 700px;
-    margin: 20px auto;
-  }
+  border: 1px solid #4e664f;
+  border-radius: 8px;
+  max-width: 700px;
+  margin: 20px auto;
+}
 
-  .dark-theme .recent-videos {
-    border: 1px solid #BB86FC;
-  }
-  
-  .recent-videos h3 {
-    margin-left: 20px;
-  }
-  
-  .recent-videos ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .recent-videos li {
-    margin-left: 20px;
-    padding: 10px;
-    cursor: pointer;
-    color: #007bff;
-    display: flex;
-    align-items: center;
-  }
-  
-  .recent-videos li:hover {
-    text-decoration: underline;
-  }
-  
-  .video-thumbnail {
-    width: 100px;
-    height: auto;
-    margin-right: 10px;
-  }
+.dark-theme .recent-videos {
+  border: 1px solid #BB86FC;
+}
 
-  .loading-indicator {
-    margin-right: 10px;
-    color: #888;
-    font-style: italic;
-  }
-  
-  .error-indicator {
-    margin-right: 10px;
-    color: red;
-    font-style: italic;
-  }
+.recent-videos h3 {
+  margin-left: 20px;
+}
 
-  .no-videos-message {
-    color: #999;
-    font-size: 16px;
-    text-align: center;
-    padding: 20px;
-  }
+.recent-videos ul {
+  list-style-type: none;
+  padding: 0;
+}
 
-  .spinner {
-    width: 20px;
-    height: 20px;
-    border: 3px solid rgba(0, 0, 0, 0.2);
-    border-top: 3px solid #007bff;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin-right: 10px;
+.recent-videos li {
+  margin-left: 20px;
+  padding: 10px;
+  cursor: pointer;
+  color: #007bff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.recent-videos li:hover {
+  background-color: #A8DCAB;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.recent-videos li {
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.video-thumbnail {
+  width: 100px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.loading-indicator {
+  margin-right: 10px;
+  color: #888;
+  font-style: italic;
+}
+
+.error-indicator {
+  margin-right: 10px;
+  color: red;
+  font-style: italic;
+}
+
+.no-videos-message {
+  color: #999;
+  font-size: 16px;
+  text-align: center;
+  padding: 20px;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(0, 0, 0, 0.2);
+  border-top: 3px solid #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 10px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
+  100% {
+    transform: rotate(360deg);
   }
+}
+
+/* Delete Button */
+.delete-button {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 18px;
+  margin-left: auto;
+  cursor: pointer;
+  /* padding: 0; */
+  padding-right: 20px;
+}
+
+.delete-button:hover {
+  color: darkred;
+}

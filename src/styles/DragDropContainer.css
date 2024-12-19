@@ -1,0 +1,50 @@
+/* Default Drag-and-Drop Container Styles */
+.drag-drop-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    border: 2px dashed #4e664f;
+    border-radius: 12px;
+    background-color: #8cb88ee0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Remove background and border when a video is loaded */
+.drag-drop-container.video-loaded {
+    background-color: transparent;
+    border: none;
+}
+
+.dark-mode .drag-drop-container.video-loaded {
+    background-color: transparent;
+    border: none;
+}
+
+/* Placeholder styles */
+.drag-placeholder {
+    font-size: 18px;
+    color: #666;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Dark Mode Drag-and-Drop Container */
+.drag-drop-container.dark-mode {
+    background-color: #3c4042;
+    color: #fff;
+    border: 2px dashed #bb86fc;
+}
+
+/* Dark Mode Placeholder styles */
+.drag-drop-container.dark-mode .drag-placeholder {
+    color: #bb86fc;
+}
+
+/* Drag-and-Drop Icon */
+.drag-icon {
+    max-width: 100px;
+}

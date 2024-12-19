@@ -17,6 +17,7 @@ const App = () => {
     handleUrlChange,
     handleConfirm,
     handleDrop,
+    handleDeleteVideo,
   } = useVideoUpload();
 
   const { isDarkMode, toggleDarkMode } = useDarkMode();
@@ -44,6 +45,7 @@ const App = () => {
       <RecentVideos
         recentVideos={recentVideos}
         onRecentClick={handleRecentClick}
+        onDeleteClick={handleDeleteVideo}
       />
     </div>
   );
